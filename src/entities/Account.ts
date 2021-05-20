@@ -1,4 +1,5 @@
 import Currency from 'entities/Currency';
+import { type } from 'os';
 
 type BalanceAsCentsT = {
   [currency: string]: number;
@@ -53,19 +54,34 @@ export enum DeleteStrategyT {
   Move
 }
 
-const GroupToTextMap: { [code in AccountGroupT]?: string } = {
-  [AccountGroupT.Cash]: 'Cash',
-  [AccountGroupT.Bank]: 'Bank Account',
-  [AccountGroupT.Deposit]: 'Deposit',
-  [AccountGroupT.Credit]: 'Credit',
-  [AccountGroupT.Asset]: 'Asset'
-};
+
+type AccountGroupType = {
+  [code: string]: string
+}
+let GroupToTextMap: AccountGroupType = {}
+
+loadAccountGroups()
+
+function loadAccountGroups() {
+  return fetch("http://localhost:8080/accountGroups")
+    .then(res => res.json())
+    .then(res => res.reduce(function(acc: { [x: string]: {}; }, obj: any) {
+      acc[obj.code] = obj.name
+
+      return acc
+    }, {}))
+    .then(res => setAccountGroups(res))
+}
+
+function setAccountGroups(obj: any) {
+  GroupToTextMap = obj
+}
 
 export const defaultGroup = AccountGroupT.Cash;
 export const defaultDeleteStrategy = DeleteStrategyT.Archive;
 
 export function getGroupName(code: AccountGroupT) {
-  return GroupToTextMap[code];
+  return GroupToTextMap[code.toString()];
 }
 export function getAccountGroupOptions() {
   return Object.entries(GroupToTextMap).map(([code, text]) => ({
