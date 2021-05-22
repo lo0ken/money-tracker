@@ -39,28 +39,20 @@ function destroy() {
 }
 
 function loadAll() {
-  return accountsDB()
-    .allDocs({
-      include_docs: true,
-      conflicts: true,
-      startkey: 'A',
-      endkey: 'A\uffff'
-    })
-    .then(response => Promise.all(response.rows.map(resolveConflicts)))
-    .then(docs => docs.map(storageToState));
+  return fetch("http://localhost:8080/accounts")
+    .then(res => res.json())
+    .then(res => res.map(storageToState))
 }
 
 function save(account) {
-  return accountsDB()
-    .get(account.id)
-    .then(doc => accountsDB().put({ ...doc, ...stateToStorage(account) }))
-    .catch(err => {
-      if (err.status !== 404) throw err;
-      return accountsDB().put({
-        _id: account.id,
-        ...stateToStorage(account)
-      });
-    });
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(account)
+  };
+
+  return fetch('http://localhost:8080/accounts/save', requestOptions)
+    .then(response => response)
 }
 
 function archive(accountId) {
@@ -91,37 +83,4 @@ function updateLastSyncedBalance(accounts) {
   accounts.forEach(account => {
     localStorage.setItem(account.id, JSON.stringify(account.balance));
   });
-}
-
-async function resolveConflicts(row) {
-  if (!row.doc._conflicts) return row.doc;
-
-  const lastSyncedBalance = JSON.parse(localStorage.getItem(row.doc._id));
-  const conflictedBalances = await Promise.all(
-    row.doc._conflicts.map(async rev =>
-      accountsDB()
-        .get(row.doc._id, { rev })
-        .then(doc => doc.balance)
-    )
-  );
-  conflictedBalances.push(row.doc.balance);
-  row.doc.balance = resolveBalance(lastSyncedBalance, conflictedBalances);
-
-  return Promise.all(
-    row.doc._conflicts.map(async rev => accountsDB().remove(row.doc._id, rev))
-  )
-    .then(() => accountsDB().put(row.doc))
-    .then(() => row.doc);
-}
-
-function resolveBalance(lastSynced, conflictedBalances) {
-  return Object.keys(lastSynced).reduce((balance, code) => {
-    balance[code] =
-      lastSynced[code] +
-      conflictedBalances.reduce(
-        (delta, conflicted) => delta + (conflicted[code] - lastSynced[code]),
-        0
-      );
-    return balance;
-  }, {});
 }
