@@ -25,20 +25,13 @@ function destroy() {
 }
 
 function load(kind) {
-  return tagsDB()
-    .allDocs({
-      include_docs: true,
-      start_key: `t${kind}`,
-      end_key: `t${kind}\uffff`
-    })
-    .then(response =>
-      response.rows.map(row => ({
-        tag: row.doc._id.split('/')[1],
-        usage: row.doc.usage
-      }))
-    )
-    .then(docs => docs.sort((a, b) => b.usage - a.usage))
-    .then(docs => docs.map(doc => doc.tag));
+
+  return fetch("http://localhost:8080/tags?typeId=" + kind)
+    .then(response => response.json())
+    .then(response => response.map(row => ({
+        tag: row.name,
+      })))
+    .then(tags => tags.map(tag => tag.tag))
 }
 
 function updateUsage(kind, tag, delta) {

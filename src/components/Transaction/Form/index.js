@@ -34,8 +34,22 @@ class TransactionForm extends React.Component {
   };
 
   onTagAdd = (_, { value }) => {
-    this.props.addTag({ kind: this.props.form.kind, tag: value });
+    let tag = {
+      kind: this.props.form.kind,
+      tag: value
+    }
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(tag)
+    };
+
+    return fetch('http://localhost:8080/tags/save', requestOptions)
+      .then(response => response)
+      .then(this.props.addTag(tag))
   };
+
   onTagSearchChange = (_, { searchQuery }) => this.setState({ searchQuery });
   onTagClose = () => this.setState({ searchQuery: '' });
 
