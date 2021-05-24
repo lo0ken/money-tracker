@@ -62,11 +62,15 @@ function archive(accountId) {
 }
 
 function mutateBalance({ accountId, currency, amount }) {
-  return accountsDB()
+  return fetch("http://localhost:8080/accounts/" + accountId)
+    .then(res => res.json())
+
+
+  /*return accountsDB()
     .get(accountId)
     .then(doc => accountsDB().put(mutateAccountBalance(doc, currency, amount)))
     .then(({ rev }) => accountsDB().get(accountId, rev))
-    .then(doc => storageToState(doc));
+    .then(doc => storageToState(doc));*/
 }
 
 function remove(accountId) {

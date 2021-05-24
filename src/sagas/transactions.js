@@ -43,8 +43,8 @@ export function* loadRecentTransactionsSaga() {
 export function* removeTransactionSaga(action) {
   const prev = yield call(TransactionsStorage.remove, action.payload);
 
-  yield call(updateAccountsBalance, prev);
-  yield call(updateTagsUsage, prev);
+  //yield call(updateAccountsBalance, prev);
+  //yield call(updateTagsUsage, prev);
   yield call(loadRecentTransactionsSaga);
   yield call(loadFilterTransactionsSaga);
   yield call(resetTransactionFormSaga);
@@ -53,12 +53,11 @@ export function* removeTransactionSaga(action) {
 
 export function* saveTransactionSaga(action) {
   const next = action.payload;
-  const prev = yield call(TransactionsStorage.remove, next.id);
+  const prev = null
   next.id = `T${next.date}-${Date.now()}`;
 
   yield call(TransactionsStorage.save, next);
-  yield call(updateAccountsBalance, prev, next);
-  yield call(updateTagsUsage, prev, next);
+  yield call(updateAccountsBalance, next, next);
   yield call(loadRecentTransactionsSaga);
   yield call(loadFilterTransactionsSaga);
   yield call(resetTransactionFormSaga);

@@ -128,8 +128,25 @@ function filterByTags(docs, tags) {
     : docs;
 }
 
+async function saveTrans(transaction) {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(transaction)
+  };
+
+  const response = await fetch("http://localhost:8080/transactions/save", requestOptions);
+  const body = await response.clone().json()
+  return body
+}
+
 function save(transaction) {
-  return transactionsDB()
+
+    return saveTrans(transaction).then(
+      result => stateToStorage(result)
+    )
+
+  /*return transactionsDB()
     .get(transaction.id)
     .then(doc =>
       transactionsDB().put({
@@ -144,7 +161,7 @@ function save(transaction) {
         _id: transaction.id,
         ...stateToStorage(transaction)
       });
-    });
+    });*/
 }
 
 function remove(id) {
