@@ -60,17 +60,10 @@ function load(id) {
     });
 }
 
-function loadRecent(limit = recentListLimit) {
-  return transactionsDB()
-    .allDocs({
-      include_docs: true,
-      descending: true,
-      startkey: 'T\uffff',
-      endkey: 'T',
-      limit
-    })
-    .then(response => response.rows.map(row => row.doc))
-    .then(docs => docs.map(storageToState));
+async function loadRecent(limit = recentListLimit) {
+  return await fetch("http://localhost:8080/transactions/recent?limit=" + limit)
+    .then(response => response.json())
+    .then(response => response.map(stateToStorage))
 }
 
 async function getAll() {
@@ -85,18 +78,15 @@ async function getAll() {
     .then(docs => docs.map(storageToState));
 }
 
-function loadFiltered(filters = {}) {
-  return transactionsDB()
-    .allDocs({
-      include_docs: true,
-      descending: true,
-      startkey: filters.date ? `T${filters.date.end}-\uffff` : 'T\uffff',
-      endkey: filters.date ? `T${filters.date.start}-` : 'T'
-    })
-    .then(response => response.rows.map(row => row.doc))
+async function loadFiltered(filters = {}) {
+  let startDate = "startDate=" + filters.date.start
+  let endDate = "endDate=" + filters.date.end
+
+  return await fetch("http://localhost:8080/transactions?" + startDate + "&" + endDate)
+    .then(response => response.json())
     .then(docs => filterByAccount(docs, filters.accounts))
     .then(docs => filterByTags(docs, filters.tags))
-    .then(docs => docs.map(doc => storageToState(doc)));
+    .then(docs => docs.map(storageToState))
 }
 
 /**
