@@ -53,11 +53,12 @@ export function* removeTransactionSaga(action) {
 
 export function* saveTransactionSaga(action) {
   const next = action.payload;
-  const prev = null
-  next.id = `T${next.date}-${Date.now()}`;
+  //const prev = yield call(TransactionsStorage.remove, next.id);
+  if (!next.id) next.id = `T${next.date}-${Date.now()}`;
 
   yield call(TransactionsStorage.save, next);
-  yield call(updateAccountsBalance, next, next);
+  yield call(updateAccountsBalance, null, next);
+  //yield call(updateTagsUsage, prev, next);
   yield call(loadRecentTransactionsSaga);
   yield call(loadFilterTransactionsSaga);
   yield call(resetTransactionFormSaga);

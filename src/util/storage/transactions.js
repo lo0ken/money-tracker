@@ -154,10 +154,16 @@ function save(transaction) {
     });*/
 }
 
-function remove(id) {
+async function remove(id) {
   if (!id) return false;
 
-  return transactionsDB()
+  const requestOptions = {
+    method: 'DELETE'
+  };
+  return fetch("http://localhost:8080/transactions/delete/" + id, requestOptions)
+    .then(response => response.json())
+
+  /*return transactionsDB()
     .get(id)
     .then(doc =>
       transactionsDB()
@@ -167,7 +173,7 @@ function remove(id) {
     .catch(err => {
       if (err.status !== 404) throw err;
       return false;
-    });
+    });*/
 }
 
 function destroy() {
