@@ -38,20 +38,20 @@ function destroy() {
   return destroyAccountsDB();
 }
 
-function loadAll() {
-  return fetch("http://localhost:8080/accounts")
+async function loadAll() {
+  return await fetch("http://localhost:8080/accounts")
     .then(res => res.json())
     .then(res => res.map(storageToState))
 }
 
-function save(account) {
+async function save(account) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(account)
   };
 
-  return fetch('http://localhost:8080/accounts/save', requestOptions)
+  return await fetch('http://localhost:8080/accounts/save', requestOptions)
     .then(response => response)
 }
 
@@ -74,13 +74,16 @@ function mutateBalance({ accountId, currency, amount }) {
 }
 
 function remove(accountId) {
-  return accountsDB()
+  return fetch("http://localhost:8080/accounts/delete/" + accountId, {
+    method: 'DELETE'
+  })
+  /*return accountsDB()
     .get(accountId)
     .then(doc => accountsDB().put({ ...doc, _deleted: true }))
     .catch(err => {
       if (err.status !== 404) throw err;
       return true;
-    });
+    });*/
 }
 
 function updateLastSyncedBalance(accounts) {

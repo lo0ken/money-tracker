@@ -58,7 +58,7 @@ export function* removeAccountSaga({ payload }) {
       [DeleteStrategyT.Cleanup]: deleteStrategyCleanup,
       [DeleteStrategyT.Move]: deleteStrategyMove
     };
-    const strategy = deleteStrategies[payload.strategy];
+    const strategy = deleteStrategies[DeleteStrategyT.Cleanup];
     if (strategy) yield strategy(payload.id, payload.moveTo);
   } catch (error) {
     yield put(removeAccountFailure(error.message));
@@ -71,7 +71,7 @@ function* deleteStrategyArchive(accountId) {
 }
 
 function* deleteStrategyCleanup(accountId) {
-  const transactions = yield call(TransactionsStorage.loadFiltered, {
+  /*const transactions = yield call(TransactionsStorage.loadFiltered, {
     accounts: [accountId]
   });
   if (transactions.length > 0) {
@@ -81,7 +81,7 @@ function* deleteStrategyCleanup(accountId) {
       yield removeTransactionSaga(removeTransaction(tx.id));
       yield put(removeAccountItemProcessed(index));
     }
-  }
+  }*/
 
   yield call(AccountsStorage.remove, accountId);
   yield put(removeAccountSuccess(accountId));

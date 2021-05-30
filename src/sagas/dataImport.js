@@ -96,7 +96,7 @@ export function* createNewAccount(name, currencies) {
       return acc;
     }, {}),
     currencies,
-    on_dashboard: false
+    on_dashboard: true
   });
   yield saveAccountSaga(saveAccount(account));
 

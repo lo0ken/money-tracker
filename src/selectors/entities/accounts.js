@@ -26,12 +26,12 @@ export const getAccountsList = state =>
 
 export const getVisibleAccountsList = createSelector(
   getAccountsList,
-  accounts => accounts.filter(account => !account.archived)
+  accounts => accounts
 );
 
 export const getDashboardAccountsList = createSelector(
   getVisibleAccountsList,
-  accounts => accounts.filter(account => account.on_dashboard)
+  accounts => accounts
 );
 
 export const getAccountsNameMap = createSelector(

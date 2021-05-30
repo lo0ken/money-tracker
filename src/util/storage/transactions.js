@@ -63,7 +63,7 @@ function load(id) {
 async function loadRecent(limit = recentListLimit) {
   return await fetch("http://localhost:8080/transactions/recent?limit=" + limit)
     .then(response => response.json())
-    .then(response => response.map(stateToStorage))
+    .then(response => response.map(storageToState))
 }
 
 async function getAll() {

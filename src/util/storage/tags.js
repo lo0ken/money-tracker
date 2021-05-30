@@ -24,9 +24,9 @@ function destroy() {
   return destroyTagsDB();
 }
 
-function load(kind) {
+async function load(kind) {
 
-  return fetch("http://localhost:8080/tags?typeId=" + kind)
+  return await fetch("http://localhost:8080/tags?typeId=" + kind)
     .then(response => response.json())
     .then(response => response.map(row => ({
         tag: row.name,

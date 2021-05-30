@@ -139,8 +139,8 @@ export function formTostate({
     name,
     group,
     currencies,
-    on_dashboard,
-    archived
+    on_dashboard: true,
+    archived: false
   };
 }
 
@@ -172,8 +172,8 @@ export function storageToState({
     group,
     balance,
     currencies,
-    on_dashboard,
-    archived
+    on_dashboard: true,
+    archived: false
   };
 }
 
@@ -185,7 +185,7 @@ export function stateToStorage({
   on_dashboard,
   archived
 }: AccountStateT) {
-  return { name, group, balance, currencies, on_dashboard, archived };
+  return { name, group, balance, currencies, on_dashboard: true, archived: false };
 }
 
 export function mutateBalance(
