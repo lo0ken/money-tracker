@@ -1,10 +1,10 @@
 import format from 'date-fns/format';
 import getDaysInMonth from 'date-fns/get_days_in_month';
 import range from 'lodash/range';
-import Currency, { ExchangeRateT } from 'entities/Currency';
-import { ReportDataT, ReportStateT, ReportTimespanT } from 'entities/Report';
-import { TransactionStateT, TransationKindT } from 'entities/Transaction';
-import { toUtcTimestamp } from 'util/timezone';
+import Currency, { ExchangeRateT } from '../../entities/Currency';
+import { ReportDataT, ReportStateT, ReportTimespanT } from '../../entities/Report';
+import { TransactionStateT, TransationKindT } from '../../entities/Transaction';
+import { toUtcTimestamp } from '../../util/timezone';
 
 const { Expense, Income } = TransationKindT;
 

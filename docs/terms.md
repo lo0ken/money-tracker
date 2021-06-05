@@ -74,7 +74,7 @@ even in your free time. Before making contributions to this site, get written pe
 ## User Discussion Lists and Forums
 
 The Operators may, but are not obligated to, monitor or review any areas on the Website where users transmit or post
-communications or communicate solely with each other, including but not limited to user forums and email lists, and
+communications or communicate solely with each other, including but not limited to userAuth forums and email lists, and
 the content of any such communications. The Operators, however, will have no liability related to the content of any
 such communications, whether or not arising under the laws of copyright, libel, privacy, obscenity, or otherwise. The
 Operators may edit or remove content on the the Website at their discretion at any time.
@@ -108,7 +108,7 @@ To learn more about how we protect the privacy of the personal information in yo
 You agree to defend, indemnify and hold harmless the Operators, agents, vendors or suppliers from and against any and
 all claims, damages, costs and expenses, including reasonable attorneys' fees, arising from or related to your use or
 misuse of the Website, including, without limitation, your violation of these Terms and Conditions, the infringement
-by you, or any other subscriber or user of your account, of any intellectual property right or other right of any
+by you, or any other subscriber or userAuth of your account, of any intellectual property right or other right of any
 person or entity.
 
 ## Termination

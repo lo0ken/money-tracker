@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import throttle from 'lodash/throttle';
 import routes from '../router/routes';
-import SignIn from 'features/user/containers/SignIn';
+import SignIn from '../features/user/containers/SignIn';
 import InitialSetup from './InitialSetup';
 import SidebarMenu from './SidebarMenu';
 import Header from '../components/Header';
@@ -14,12 +14,21 @@ import SyncWarning from './SyncWarning';
 import { windowResize } from '../actions/ui/windowResize';
 import { toggleSidebar } from '../actions/ui/sidebar';
 import { bootstrap } from '../actions/app';
+import Login from '../components/login';
+import {getProfileFetch, logoutUser} from '../redux/actions';
+import Signup from '../components/signup';
+
+function userProfile() {
+  console.log("xyi")
+}
 
 class App extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', throttle(this.props.windowResize, 500));
     this.props.bootstrap();
+    userProfile()
   }
+
 
   render() {
     if (!this.props.isLoaded) {
@@ -37,7 +46,8 @@ class App extends React.Component {
     return (
       <Router history={this.props.history}>
         <Switch>
-          <Route path="/auth" exact={true} component={SignIn} />
+          <Route exact path="/sign-in" component={Login} />
+          <Route exact path="/sign-up" component={Signup} />
           {!this.props.isSetupComplete ? (
             <Route component={InitialSetup} />
           ) : (
@@ -124,7 +134,8 @@ const mapStateToProps = (state, ownProps) => ({
   isSyncRunning: state.ui.sync.isRunning,
   isSetupComplete: state.settings.isSetupComplete,
   isMobile: state.ui.isMobile,
-  isSidebarOpen: state.ui.isSidebarOpen
+  isSidebarOpen: state.ui.isSidebarOpen,
+  currentUser: state.user.currentUser
 });
 
 export default connect(

@@ -55,7 +55,7 @@ function CouchDbProvision(user, context, callback) {
         },
         (err, response, body) => {
           if (err) return reject(err);
-          if (!body.ok) return reject('Could not create user');
+          if (!body.ok) return reject('Could not create userAuth');
 
           user.app_metadata.couchDB.username = name;
           user.app_metadata.couchDB.password = password;

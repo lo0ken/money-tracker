@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { syncSaga } from 'sagas/sync';
+import { syncSaga } from '../../../sagas/sync';
 import * as user from './User.action';
 
 export function* isDemoUser() {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Message, Button } from 'semantic-ui-react';
-import { isDemoUser } from 'features/user/state/User.selector';
+import { isDemoUser } from '../features/user/state/User.selector';
 
 class DemoNotice extends React.Component {
   render() {
@@ -11,12 +11,12 @@ class DemoNotice extends React.Component {
     return (
       <Message
         size="large"
-        icon="user circle outline"
+        icon="userAuth circle outline"
         header="Welcome to demo account!"
         content={
           <div style={{ marginTop: '0.5em' }}>
             <p>
-              You are logged in as a demo user with sample data generated to
+              You are logged in as a demo userAuth with sample data generated to
               show you how things might look like.
             </p>
             <p>

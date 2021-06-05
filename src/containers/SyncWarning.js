@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { dismissSyncWarning } from '../actions/ui/sync';
-import { isSignedIn } from 'features/user/state/User.selector';
+import { isSignedIn } from '../features/user/state/User.selector';
 
 class SyncWarning extends React.Component {
   render() {

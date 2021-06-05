@@ -5,8 +5,8 @@ import {
   TransationKindT,
   getKindLabel,
   formToState
-} from 'entities/Transaction';
-import { DropdownOption } from 'components/types';
+} from '../../../entities/Transaction';
+import { DropdownOption } from '../../../components/types';
 import Header from './Header';
 import Account from './Account';
 import './index.css';

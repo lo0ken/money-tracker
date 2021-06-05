@@ -17,7 +17,7 @@ import {
 import { loadAccountsSaga } from './accounts';
 import { loadTagsSaga } from './tags';
 import { loadRecentTransactionsSaga } from './transactions';
-import { isDemoUser } from 'features/user/state/User.selector';
+import { isDemoUser } from '../features/user/state/User.selector';
 import AccountsStorage from '../util/storage/accounts';
 import TransactionsStorage from '../util/storage/transactions';
 import TagsStorage from '../util/storage/tags';

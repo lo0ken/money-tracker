@@ -1,4 +1,4 @@
-import { TransactionStateT, TransationKindT } from 'entities/Transaction';
+import { TransactionStateT, TransationKindT } from '../../entities/Transaction';
 
 const { Transfer } = TransationKindT;
 

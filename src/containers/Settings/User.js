@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Popup, Button } from 'semantic-ui-react';
-import { signOut } from 'features/user/state/ui/SignOut.action';
-import { isSignedIn, isDemoUser } from 'features/user/state/User.selector';
+import { signOut } from '../../features/user/state/ui/SignOut.action';
+import { isSignedIn, isDemoUser } from '../../features/user/state/User.selector';
 
 class User extends React.Component {
   render() {
@@ -39,13 +39,13 @@ class User extends React.Component {
   signOutButtonLabel() {
     if (this.props.isDemo) return 'Reset demo';
 
-    return this.props.isAuthenticated ? 'Sign out' : 'Delete data';
+    return 'Sign out';
   }
 
   signOutButtonIcon() {
     if (this.props.isDemo) return 'refresh';
 
-    return this.props.isAuthenticated ? 'sign out' : 'trash';
+    return  'sign out';
   }
 }
 

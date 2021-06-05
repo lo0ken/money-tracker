@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import SignIn from 'features/user/components/SignIn';
+import SignIn from '../../../../features/user/components/SignIn';
 import {
   changeEmail,
   changeCode,
   sendCode,
   verifyCode,
   finishAuth
-} from 'features/user/state/ui/SignIn.action';
+} from '../../../../features/user/state/ui/SignIn.action';
 import { RootStateT } from 'reducers';
 
 const mapStateToProps = ({ user }: RootStateT) => ({

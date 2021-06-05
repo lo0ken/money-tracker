@@ -52,7 +52,7 @@ us and that cannot be tied back to you as a specific individual. Examples includ
 visited just before and just after our site), the pages viewed, time spent at our Web site, and Internet Protocol (IP)
 addresses. An IP address is a number that is automatically assigned to your computer whenever you access the Internet.
 For example, when you request a page from one of our sites, our servers log your IP address to create aggregate
-reports on user demographics and traffic patterns and for purposes of system administration.
+reports on userAuth demographics and traffic patterns and for purposes of system administration.
 
 #### Log Files
 
@@ -94,7 +94,7 @@ personal information to better understand your needs and interests and to provid
 the Operators web pages, you may be able to request information, subscribe to mailing lists, participate in online
 discussions, collaborate on documents, provide feedback, submit information into registries, register for events,
 apply for membership, or join technical committees or working groups. The types of personal information you provide to
-us on these pages may include name, address, phone number, e-mail address, user IDs, passwords, billing information,
+us on these pages may include name, address, phone number, e-mail address, userAuth IDs, passwords, billing information,
 or credit card information.
 
 ## Members-Only Web Sites
@@ -116,7 +116,7 @@ performance, and effectiveness. It may be used to improve the experience, usabil
 
 The Operators may use personal information to provide services that support the activities of the Operators’s members
 and their collaboration on the Operators’s standards and projects. When accessing the Operators’s members-only web
-pages, your personal user information may be tracked by the Operators in order to support collaboration, ensure
+pages, your personal userAuth information may be tracked by the Operators in order to support collaboration, ensure
 authorized access, and enable communication between members.
 
 Credit card information may be collected to facilitate membership applications; or if you purchase a product or
@@ -144,7 +144,7 @@ subscribing to one of our newsletters or registering for one of our public meeti
 becoming part of the publicly accessible archives.
 
 On some sites, anonymous users are allowed to post content and/or participate in forum discussions. In such a case,
-since no user name can be associated with such a user, the IP address number of a user is used as an identifier. When
+since no userAuth name can be associated with such a userAuth, the IP address number of a userAuth is used as an identifier. When
 posting content or messages to a Operators site anonymously, your IP address may be revealed to the public.
 
 If you are a registered member of an Operators's website or email list, you should be aware that some items of your
@@ -183,7 +183,7 @@ The Operators are committed to keeping the personal information of our members a
 submitted to us can be verified and changed. In order to do this, please <a href="mailto:contact@moneytracker.cc">email
 us</a> a request. We may provide members with online access to their own personal profiles, enabling them to update
 or delete information at any time. To protect our members’ privacy and security, we also may take reasonable steps to
-verify identity, such as a user ID and password, before granting access to modify personal profile data. Certain areas
+verify identity, such as a userAuth ID and password, before granting access to modify personal profile data. Certain areas
 of the Operators’s web sites may limit access to specific individuals through the use of passwords or other personal
 identifiers; a password prompt is your indication that a members-only resource is being accessed.
 

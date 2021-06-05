@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Checkbox } from 'semantic-ui-react';
-import { getAccountGroupOptions, formTostate } from 'entities/Account';
+import { getAccountGroupOptions, formTostate } from '../../../entities/Account';
 import BalanceTable from './BalanceTable';
 import './index.css';
 

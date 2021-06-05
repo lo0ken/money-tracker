@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
-import { getKindLabel, TransationKindT } from 'entities/Transaction';
+import { getKindLabel, TransationKindT } from '../../../entities/Transaction';
 
 const Header = ({ withTransfer, activeKind, changeKind }) => {
   const { Expense, Transfer, Income } = TransationKindT;

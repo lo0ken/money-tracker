@@ -1,6 +1,6 @@
 import format from 'date-fns/format';
-import Currency from 'entities/Currency';
-import { toLocalTimestamp } from 'util/timezone';
+import Currency from '../entities/Currency';
+import { toLocalTimestamp } from '../util/timezone';
 
 interface TransactionBaseT {
   kind: TransationKindT;

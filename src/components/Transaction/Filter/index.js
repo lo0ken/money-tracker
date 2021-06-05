@@ -10,8 +10,8 @@ import {
   defaultDateFilterRange,
   getDateFilterRangeStart,
   getDateFilterRangeEnd
-} from 'entities/Transaction/DateFilterRange';
-import { DropdownOption } from 'components/types';
+} from '../../../entities/Transaction/DateFilterRange';
+import { DropdownOption } from '../../../components/types';
 import './index.css';
 
 class Filter extends React.Component {

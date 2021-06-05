@@ -5,7 +5,7 @@ import { Icon, Header } from 'semantic-ui-react';
 import Logo from '../Logo';
 import { toggleSidebar } from '../../actions/ui/sidebar';
 import { sync } from '../../actions/ui/sync';
-import { isSignedIn } from 'features/user/state/User.selector';
+import { isSignedIn } from '../../features/user/state/User.selector';
 import './index.css';
 
 const AppHeader = ({

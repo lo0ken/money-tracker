@@ -7,7 +7,7 @@ import settings from './settings';
 import sync from './sync';
 import tags from './tags';
 import transactions from './transactions';
-import { UserSaga } from 'features/user/state';
+import { UserSaga } from '../features/user/state';
 
 export default function* rootSaga() {
   yield all([

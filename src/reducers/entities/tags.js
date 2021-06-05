@@ -5,7 +5,7 @@ import {
   loadIncomeTagsSuccess
 } from '../../actions/entities/tags';
 import { addTag } from '../../actions/ui/form/transaction';
-import { signOutSuccess } from 'features/user/state/ui/SignOut.action';
+import { signOutSuccess } from '../../features/user/state/ui/SignOut.action';
 import { TransationKindT } from '../../entities/Transaction';
 
 const { Expense, Transfer, Income } = TransationKindT;

@@ -8,7 +8,7 @@ import {
   toggleSectionCollapse,
   completeSetup
 } from '../actions/settings';
-import { signOutSuccess } from 'features/user/state/ui/SignOut.action';
+import { signOutSuccess } from '../features/user/state/ui/SignOut.action';
 import Currency from '../entities/Currency';
 
 const initialState = {

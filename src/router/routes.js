@@ -4,6 +4,7 @@ import Accounts from '../containers/Accounts';
 import Reports from '../containers/Reports';
 import Settings from '../containers/Settings';
 import WorkInProgress from '../containers/WorkInProgress';
+import Signup from '../components/signup';
 
 export default [
   {

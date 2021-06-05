@@ -4,7 +4,7 @@ import {
   defaultDeleteStrategy,
   getDeleteStartegyOptions,
   DeleteStrategyT
-} from 'entities/Account';
+} from '../../../entities/Account';
 
 class DeleteStrategy extends React.Component {
   state = {

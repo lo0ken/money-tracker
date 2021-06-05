@@ -9,14 +9,14 @@ import {
   loadReport,
   loadReportSuccess,
   loadReportFailure
-} from 'actions/ui/report';
+} from '../../../actions/ui/report';
 import {
   defaultKind,
   defaultTimespan,
   defaultDate,
   moveDateBackwards,
   moveDateForwards
-} from 'entities/Report';
+} from '../../../entities/Report';
 
 export default handleActions(
   {

@@ -1,6 +1,6 @@
-import Currency, { ExchangeRateT } from 'entities/Currency';
-import { TransactionStateT, TransationKindT } from 'entities/Transaction';
-import { ReportDataT, ReportStateT } from 'entities/Report';
+import Currency, { ExchangeRateT } from '../../entities/Currency';
+import { TransactionStateT, TransationKindT } from '../../entities/Transaction';
+import { ReportDataT, ReportStateT } from '../../entities/Report';
 
 export default function ExpenseTagsData(
   report: ReportStateT,

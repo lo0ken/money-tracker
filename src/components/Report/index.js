@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Loader } from 'semantic-ui-react';
-import { ReportKindT } from 'entities/Report';
+import { ReportKindT } from '../../entities/Report';
 import ExpenseIncome from './Kind/ExpenseIncome';
 import NetIncome from './Kind/NetIncome';
 import ExpenseTags from './Kind/ExpenseTags';

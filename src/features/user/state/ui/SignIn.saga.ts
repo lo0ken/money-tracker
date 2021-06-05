@@ -1,11 +1,11 @@
 import { takeLatest, select, call, put } from 'redux-saga/effects';
 import { getType } from 'typesafe-actions';
-import Auth from 'util/auth';
+import Auth from '../../../../util/auth';
 import { getSignInEmail, getSignInCode } from './SignIn.selector';
 import * as SignIn from './SignIn.action';
-import { syncSaga } from 'sagas/sync';
-import { loadSetting } from 'sagas/settings';
-import { isUserLoggedIn } from 'features/user/state/User.saga';
+import { syncSaga } from '../../../../sagas/sync';
+import { loadSetting } from '../../../../sagas/settings';
+import { isUserLoggedIn } from '../../../../features/user/state/User.saga';
 
 export function* sendCodeSaga() {
   const email = yield select(getSignInEmail);

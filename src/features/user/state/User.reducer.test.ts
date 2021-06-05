@@ -7,14 +7,14 @@ it('returns default state', () => {
   expect(initialState).toMatchSnapshot();
 });
 
-it('changes flag when user is authenticated', () => {
+it('changes flag when userAuth is authenticated', () => {
   expect(reducer({ ...initialState }, signInSuccess() as UserActionT)).toEqual({
     ...initialState,
     isSignedIn: true
   });
 });
 
-it('changes flag when user is demo', () => {
+it('changes flag when userAuth is demo', () => {
   expect(reducer({ ...initialState }, setDemoUser() as UserActionT)).toEqual({
     ...initialState,
     isDemoUser: true

@@ -1,4 +1,4 @@
-import { timespanLabel } from 'entities/Report';
+import { timespanLabel } from '../../entities/Report';
 
 export const getReport = state => state.ui.report;
 export const getTimespanLabel = state => {

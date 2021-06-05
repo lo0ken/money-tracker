@@ -7,7 +7,7 @@ import {
   updateAccount,
   removeAccountSuccess
 } from '../../actions/entities/accounts';
-import { signOutSuccess } from 'features/user/state/ui/SignOut.action';
+import { signOutSuccess } from '../../features/user/state/ui/SignOut.action';
 import EntityMap from '../../entities/EntityMap';
 
 const initialState = EntityMap.fromArray([]);
