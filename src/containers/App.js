@@ -18,15 +18,16 @@ import Login from '../components/login';
 import {getProfileFetch, logoutUser} from '../redux/actions';
 import Signup from '../components/signup';
 
-function userProfile() {
-  console.log("xyi")
-}
+export const PrivateRoute = ({component: Component, ...rest}) => (
+  <Route {...rest} render={(props) => (
+    localStorage.getItem('token') ? <Component {...props} /> : <Redirect to="/sign-in"/>
+  )} />
+)
 
 class App extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', throttle(this.props.windowResize, 500));
     this.props.bootstrap();
-    userProfile()
   }
 
 
@@ -49,10 +50,11 @@ class App extends React.Component {
           <Route exact path="/sign-in" component={Login} />
           <Route exact path="/sign-up" component={Signup} />
           {!this.props.isSetupComplete ? (
-            <Route component={InitialSetup} />
+            <PrivateRoute component={InitialSetup} />
           ) : (
             <Route render={this.renderNavigationRoutes} />
           )}
+
         </Switch>
       </Router>
     );
@@ -143,6 +145,6 @@ export default connect(
   {
     bootstrap,
     windowResize,
-    toggleSidebar
+    toggleSidebar,
   }
 )(App);

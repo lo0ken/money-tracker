@@ -39,15 +39,21 @@ function destroy() {
 }
 
 async function loadAll() {
-  return await fetch("http://localhost:8080/accounts")
+  const token = localStorage.token;
+
+  return await fetch("http://localhost:8080/accounts", {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
     .then(res => res.json())
     .then(res => res.map(storageToState))
 }
 
 async function save(account) {
+  const token = localStorage.token;
+
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
     body: JSON.stringify(account)
   };
 
@@ -62,7 +68,11 @@ function archive(accountId) {
 }
 
 function mutateBalance({ accountId, currency, amount }) {
-  return fetch("http://localhost:8080/accounts/" + accountId)
+  const token = localStorage.token;
+
+  return fetch("http://localhost:8080/accounts/" + accountId, {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
     .then(res => res.json())
 
 
@@ -74,8 +84,11 @@ function mutateBalance({ accountId, currency, amount }) {
 }
 
 function remove(accountId) {
+  const token = localStorage.token;
+
   return fetch("http://localhost:8080/accounts/delete/" + accountId, {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: { 'Authorization': `Bearer ${token}` }
   })
   /*return accountsDB()
     .get(accountId)

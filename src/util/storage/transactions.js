@@ -61,7 +61,11 @@ function load(id) {
 }
 
 async function loadRecent(limit = recentListLimit) {
-  return await fetch("http://localhost:8080/transactions/recent?limit=" + limit)
+  const token = localStorage.token;
+
+  return await fetch("http://localhost:8080/transactions/recent?limit=" + limit, {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
     .then(response => response.json())
     .then(response => response.map(storageToState))
 }
@@ -79,10 +83,14 @@ async function getAll() {
 }
 
 async function loadFiltered(filters = {}) {
+  const token = localStorage.token;
+
   let startDate = "startDate=" + filters.date.start
   let endDate = "endDate=" + filters.date.end
 
-  return await fetch("http://localhost:8080/transactions?" + startDate + "&" + endDate)
+  return await fetch("http://localhost:8080/transactions?" + startDate + "&" + endDate, {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
     .then(response => response.json())
     .then(docs => filterByAccount(docs, filters.accounts))
     .then(docs => filterByTags(docs, filters.tags))
@@ -119,9 +127,11 @@ function filterByTags(docs, tags) {
 }
 
 async function saveTrans(transaction) {
+  const token = localStorage.token;
+
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
     body: JSON.stringify(transaction)
   };
 
@@ -157,8 +167,11 @@ function save(transaction) {
 async function remove(id) {
   if (!id) return false;
 
+  const token = localStorage.token;
+
   const requestOptions = {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: { 'Authorization': `Bearer ${token}` }
   };
   return fetch("http://localhost:8080/transactions/delete/" + id, requestOptions)
     .then(response => response.json())

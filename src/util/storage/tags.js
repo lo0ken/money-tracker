@@ -25,8 +25,11 @@ function destroy() {
 }
 
 async function load(kind) {
+  const token = localStorage.token;
 
-  return await fetch("http://localhost:8080/tags?typeId=" + kind)
+  return await fetch("http://localhost:8080/tags?typeId=" + kind, {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
     .then(response => response.json())
     .then(response => response.map(row => ({
         tag: row.name,
