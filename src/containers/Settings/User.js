@@ -86,9 +86,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOut,
+  signOut: () => dispatch({type: 'userAuth/ui/sign_out/SIGN_OUT_REQUEST'}),
   getProfileFetch: () => dispatch(getProfileFetch())
 })
+
 
 export default connect(
   mapStateToProps,
