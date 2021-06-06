@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {connect} from 'react-redux';
 import {userLoginFetch} from '../redux/actions';
 import {Link, Redirect} from "react-router-dom";
+import "./login.css";
 
 class Login extends Component {
 
@@ -48,12 +49,6 @@ class Login extends Component {
                      placeholder="Enter password" />
             </div>
 
-            <div className="form-group">
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-              </div>
-            </div>
 
             <button type="submit" onClick={this.handleSubmit.bind(this)} className="btn btn-primary btn-block">Submit</button>
 
@@ -78,10 +73,5 @@ const mapStateToProps = state => ({
   currentUser: state.userAuth.currentUser
 })
 
-export function userLogFetch(userInfo) {
-  return function(dispatch) {
-    return dispatch(userLoginFetch(userInfo))
-  }
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

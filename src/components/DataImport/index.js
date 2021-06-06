@@ -11,32 +11,7 @@ class DataImport extends React.Component {
   render() {
     return (
       <div className="mt-dataImport">
-        <p>Import transactions from a CSV file.</p>
-        {this.props.error && (
-          <Message
-            error
-            icon="warning circle"
-            header="Failed to import"
-            content={this.props.error}
-          />
-        )}
-        {!this.props.isFileSelected && (
-          <React.Fragment>
-            <Button
-              content="Open File"
-              icon="file text"
-              onClick={this.handleOpenFile}
-            />
-            <input
-              type="file"
-              accept="text/csv"
-              ref={input => {
-                this.fileInput = input;
-              }}
-              onChange={this.handleFileChange}
-            />
-          </React.Fragment>
-        )}
+
         {this.props.isFileSelected && (
           <React.Fragment>
             <p>

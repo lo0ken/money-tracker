@@ -22,14 +22,6 @@ class InitialSetup extends React.Component {
       <div className="container-raised-desktop">
         <Header as="h2" icon="settings" content="Money Tracker Setup" />
         <Divider />
-        {!this.props.isAuthenticated && (
-          <p>
-            <Link to="/auth">Sign in</Link> if you want to sync your data with
-            the cloud. You may also use the tracker without signing in. Your
-            data will be stored only on current device in this case. You can
-            sign in and sync your data any time later.
-          </p>
-        )}
         <Header as="h2">Currencies</Header>
         <p>
           Select your base currency — the currency which will be used by

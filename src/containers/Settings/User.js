@@ -5,22 +5,42 @@ import { connect } from 'react-redux';
 import { Popup, Button } from 'semantic-ui-react';
 import { signOut } from '../../features/user/state/ui/SignOut.action';
 import { isSignedIn, isDemoUser } from '../../features/user/state/User.selector';
+import { getProfileFetch } from '../../redux/actions';
 
 class User extends React.Component {
+  componentDidMount() {
+    this.props.getProfileFetch()
+  }
+
   render() {
     if (this.props.isSignOutComplete) return <Redirect to="/" />;
 
     return (
+
       <Popup
         on="click"
         trigger={
+
+          <div>
+            <div>
+              <p>Username: {this.props.currentUser.username}</p>
+              <p>Email: {this.props.currentUser.email}</p>
+              <p>Phone number: {this.props.currentUser.phone}</p>
+            </div>
+
           <Button
-            content={this.signOutButtonLabel()}
+            content={
+              <div>
+
+                {this.signOutButtonLabel()}
+              </div>
+            }
             icon={this.signOutButtonIcon()}
             labelPosition="right"
           />
+          </div>
         }
-        header="Local data will de deleted!"
+        header="Are you sure you want to sign out?!"
         content={
           <Button
             content="Confirm"
@@ -61,10 +81,16 @@ const mapStateToProps = state => ({
   isDemo: isDemoUser(state),
   isAuthenticated: isSignedIn(state),
   isSignOutRunning: state.user.ui.signOut.signOutState === 'REQUEST',
-  isSignOutComplete: state.user.ui.signOut.signOutState === 'COMPLETE'
+  isSignOutComplete: state.user.ui.signOut.signOutState === 'COMPLETE',
+  currentUser: state.userAuth.currentUser
 });
+
+const mapDispatchToProps = dispatch => ({
+  signOut,
+  getProfileFetch: () => dispatch(getProfileFetch())
+})
 
 export default connect(
   mapStateToProps,
-  { signOut }
+  mapDispatchToProps
 )(User);

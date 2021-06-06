@@ -10,15 +10,11 @@ import TransactionsStorage from '../../../../util/storage/transactions';
 
 export function* signOutSaga() {
   try {
-    yield call(AccountsStorage.destroy);
-    yield call(SettingsStorage.destroy);
-    yield call(TagsStorage.destroy);
-    yield call(TransactionsStorage.destroy);
+
     yield call([localStorage, 'clear']);
 
     yield put(signOutSuccess());
-    yield isDemoUser();
-    yield loadSetting();
+
   } catch (error) {
     yield put(signOutFailure(error));
   }

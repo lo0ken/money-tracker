@@ -7,14 +7,30 @@ import NetIncome from './Kind/NetIncome';
 import ExpenseTags from './Kind/ExpenseTags';
 import NetWorth from './Kind/NetWorth';
 import './index.css';
+import { signOut } from '../../features/user/state/ui/SignOut.action';
+import { getProfileFetch } from '../../redux/actions';
+import { isDemoUser, isSignedIn } from '../../features/user/state/User.selector';
+import { connect } from 'react-redux';
 
 class Report extends React.Component {
+  componentDidMount() {
+    this.props.getProfileFetch()
+  }
+
   render() {
     return (
       <div className="ct-octave mt-report">
-        <Loader active={this.props.isLoading} />
+        {localStorage.getItem("isAdmin") === "true" &&
+        (<Loader active={this.props.isLoading} />) &&
+          !this.props.isLoading && this.renderReportByKind()
+        }
 
-        {!this.props.isLoading && this.renderReportByKind()}
+        {
+          localStorage.getItem("isAdmin") === "false" &&
+          (window.location = '/') &&
+          (window.alert("Not allowed because not a premium role!"))
+        }
+
       </div>
     );
   }
@@ -45,4 +61,15 @@ Report.propTypes = {
   })
 };
 
-export default Report;
+const mapStateToProps = state => ({
+  currentUser: state.userAuth.currentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  getProfileFetch: () => dispatch(getProfileFetch())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Report);

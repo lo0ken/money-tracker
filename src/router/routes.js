@@ -37,13 +37,6 @@ export default [
     component: Reports
   },
   {
-    path: '/budget',
-    exact: false,
-    label: 'Budget',
-    icon: 'shopping basket',
-    component: WorkInProgress
-  },
-  {
     path: '/settings',
     exact: true,
     label: 'Settings',
