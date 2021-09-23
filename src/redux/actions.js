@@ -58,7 +58,7 @@ export const getProfileFetch = () => {
           if (data.message) {
             localStorage.removeItem("token")
           } else {
-            localStorage.setItem("isAdmin", data.roles.map(r => r.name).filter(roleName => roleName === "ADMIN").length > 0);
+            localStorage.setItem("isAdmin", data.roles.map(r => r.name).filter(roleName => roleName === "PREMIUM").length > 0);
             dispatch(loginUser(data))
           }
         })

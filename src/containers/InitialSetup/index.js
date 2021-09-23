@@ -26,9 +26,6 @@ class InitialSetup extends React.Component {
         <p>
           Select your base currency — the currency which will be used by
           default.
-          <br />
-          You can also select any number of additional currencies, if you use
-          them.
         </p>
         <CurrencyInput />
         <CurrencyExchangeRate />

@@ -47,20 +47,6 @@ class Input extends React.Component {
               value={this.props.base}
             />
           </Form.Field>
-          <Form.Field>
-            <label>Additional Currencies (optional)</label>
-            <Dropdown
-              placeholder="Select additional currencies"
-              search
-              selection
-              multiple
-              renderLabel={item => item.key}
-              closeOnChange
-              onChange={this.handleSecondaryChange}
-              options={this.secondaryOptions}
-              value={this.props.secondary}
-            />
-          </Form.Field>
         </Form.Group>
       </Form>
     );

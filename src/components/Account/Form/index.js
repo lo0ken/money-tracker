@@ -42,13 +42,6 @@ class AccountForm extends React.Component {
         </Form.Group>
         <BalanceTable {...this.props} />
         <Form.Group unstackable>
-          <Form.Field width={9} style={{ paddingTop: '0.5em' }}>
-            <Checkbox
-              label="Show on Dashboard"
-              checked={this.props.form.on_dashboard}
-              onChange={this.props.toggleOnDashboard}
-            />
-          </Form.Field>
           <Form.Button width={7} primary fluid content="Save Account" />
         </Form.Group>
       </Form>
